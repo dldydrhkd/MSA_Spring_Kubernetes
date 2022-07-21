@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-api
+  labels:
+    app: sample-api
+spec:
+  selector:
+    matchLabels:
+      app: sample-api
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: sample-api
+    spec:
+      containers:
+      - name: sample-api
+        image: eureka-client-lyk:1.0
+        ports:
+        - containerPort: 8090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-api-cs
+  labels:
+    app: sample-api
+spec:
+  selector:
+    app: sample-api
+  ports:
+  - protocol: "TCP"
+    port: 8090
+    targetPort: 8090
+    name: sample-api-8090
+  type: ClusterIP
