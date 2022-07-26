@@ -1,7 +1,6 @@
 package com.example.eurekaclient.controller;
 
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
@@ -29,45 +28,27 @@ public class SampleController {
         return response;
     }
 
-    @RequestMapping(value = "/test2", method = RequestMethod.GET)
-    ResponseEntity<Map<String, String>> sample2() {
-        System.out.println("Hello");
-        ResponseEntity<Map<String, String>> response = null;
-
-        Map<String, String> resMap = new HashMap<String, String>();
-        resMap.put("type", "First eureka client!222");
-        resMap.put("message", "Spring Cloud is awesome!2222");
-
-        response = new ResponseEntity<Map<String, String>>(resMap, HttpStatus.OK);
-
-        return response;
-    }
-
-    //    회원가입
-    @ApiOperation(value = "최신 블로그 검색", notes = "특정 관광지와 관련된 가장 최신의 블로그 2개를 검색")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "OK !!"),
-            @ApiResponse(code = 404, message = "404 에러 발생, Not Found !"),
-            @ApiResponse(code = 500, message = "500 에러 발생, Internal Server Error !")
-    })
-    @GetMapping("/recentTwo")
-    public String blogRecentTwo(
-            @ApiParam(value = "관광지 이름", required=false, example = "우도(해양도립공원)")
-            @RequestParam String source){
-        return source;
-    }
-
-
-    //    회원가입
-    @ApiOperation(value = "최신 블로그 검색", notes = "특정 관광지와 관련된 가장 최신의 블로그 2개를 검색")
+    @ApiOperation(value = "kafka producer data", notes = "kafka에 넣을 데이터")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK !!"),
             @ApiResponse(code = 404, message = "404 에러 발생, Not Found !"),
             @ApiResponse(code = 500, message = "500 에러 발생, Internal Server Error !")
     })
     @PostMapping("/inputText")
-    public String inputText(String input){
+    public String inputText(@RequestBody String input){
         System.out.println(input);
+        return input;
+    }
+
+    @ApiOperation(value = "kafka consumer", notes = "kafka 데이터를 word count")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK !!"),
+            @ApiResponse(code = 404, message = "404 에러 발생, Not Found !"),
+            @ApiResponse(code = 500, message = "500 에러 발생, Internal Server Error !")
+    })
+    @GetMapping("/wordcount")
+    public String wordCount(@RequestBody String input){
+
         return input;
     }
 }

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name = "viewport" content = "width=device-width,height=device-height, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    <script src="./js/customize.js"></script>
     <title> Word Count </title>
     <style>
         div {
@@ -29,9 +30,9 @@
         <div class="left">
             <div>
                 <label for="txtSource">
-                    <form action="/inputText" method="post">
+                    <form action="/kafka" method="post">
                         <textarea placeholder="문장을 입력하세요." id="txtSource" name="txtSource" aria-label="소스텍스트" rows="1" style="resize: none; height: 80%; width:99%"></textarea>
-                        <input style ="float:right; width:20%; height:10%" type='submit' value="Word Count">
+                        <button style ="float:right; width:20%; height:10%">Word Count</button>
                     </form>
                 </label>
             </div>
@@ -40,12 +41,6 @@
         <div class="right">
             <textarea id="output" name="output" aria-label="소스텍스트" rows="1" style="resize: none; height: 80%; width:99%"></textarea>
         </div>
-    </div>
-    <div>
-        <div>
-            <textarea id="result" name="result" aria-label="소스텍스트" rows="1" style="resize: none; height: 100%; width:99%"></textarea>
-        </div>
-
     </div>
 </body>
 </html>

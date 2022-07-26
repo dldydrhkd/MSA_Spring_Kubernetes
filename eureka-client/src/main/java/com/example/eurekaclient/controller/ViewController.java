@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ViewController {
-    @RequestMapping("/jsp")
+    @RequestMapping("/index")
     public String jsp()
     {
-        System.out.println("main");
-        return "main";
+        System.out.println("index");
+        return "index";
     }
 }
