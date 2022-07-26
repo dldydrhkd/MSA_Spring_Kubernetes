@@ -56,4 +56,18 @@ public class SampleController {
             @RequestParam String source){
         return source;
     }
+
+
+    //    회원가입
+    @ApiOperation(value = "최신 블로그 검색", notes = "특정 관광지와 관련된 가장 최신의 블로그 2개를 검색")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK !!"),
+            @ApiResponse(code = 404, message = "404 에러 발생, Not Found !"),
+            @ApiResponse(code = 500, message = "500 에러 발생, Internal Server Error !")
+    })
+    @PostMapping("/inputText")
+    public String inputText(String input){
+        System.out.println(input);
+        return input;
+    }
 }
